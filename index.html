@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c05a2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Convoy of Hope">
+  <title>Convoy of Hope</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card">
+      <p class="eyebrow">Convoy of Hope</p>
+      <h1>Collect honest feedback on phone or computer.</h1>
+      <p class="hero-copy">
+        Submitters are not asked for names or emails, and the dashboard only shows the feedback itself.
+      </p>
+    </section>
+
+    <section class="main-card">
+      <div class="tabs" role="tablist" aria-label="App sections">
+        <button class="tab is-active" type="button" data-tab="submit" role="tab" aria-selected="true">Submit</button>
+        <button class="tab" type="button" data-tab="dashboard" role="tab" aria-selected="false">Dashboard</button>
+      </div>
+
+      <section class="view is-active" id="submit-view" role="tabpanel">
+        <form id="feedback-form" class="feedback-form">
+          <label>
+            Feedback Type
+            <select name="category" required>
+              <option value="">Choose one</option>
+              <option value="Suggestion">Suggestion</option>
+              <option value="Issue">Issue</option>
+              <option value="Appreciation">Appreciation</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            Rating
+            <select name="rating" required>
+              <option value="">Choose one</option>
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Good</option>
+              <option value="3">3 - Average</option>
+              <option value="2">2 - Needs work</option>
+              <option value="1">1 - Poor</option>
+            </select>
+          </label>
+
+          <label>
+            Feedback
+            <textarea name="message" rows="6" maxlength="1000" placeholder="Write your feedback here." required></textarea>
+          </label>
+
+          <div class="privacy-banner">
+            This form is anonymous. Do not type your name if you want to stay unidentified.
+          </div>
+
+          <button class="primary-btn" type="submit">Send Anonymously</button>
+          <p id="form-status" class="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="view" id="dashboard-view" role="tabpanel" aria-hidden="true">
+        <div class="dashboard-top">
+          <div>
+            <h2>Feedback Dashboard</h2>
+            <p>Submissions are stored in a cloud database and shown without sender details.</p>
+          </div>
+          <button id="refresh-feedback" class="ghost-btn" type="button">Refresh</button>
+        </div>
+
+        <div class="stats">
+          <article class="stat-card">
+            <span>Total Feedback</span>
+            <strong id="total-count">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Average Rating</span>
+            <strong id="average-rating">0.0</strong>
+          </article>
+        </div>
+
+        <div id="feedback-list" class="feedback-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
